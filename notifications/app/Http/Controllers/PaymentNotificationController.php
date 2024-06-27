@@ -24,7 +24,8 @@ class PaymentNotificationController extends Controller
 
         $month = $data['month'];
         $year = $data['year'];
-
+        $email = $request->get('email');
+        $role = $request->get('role');
         $message = "Payment for for $month $year has been disbursed";
 
         //if true $ true = true
@@ -38,22 +39,22 @@ class PaymentNotificationController extends Controller
         // $isManager = $user->hasRole('manager');
         // $isOwner = $user->id == $data['employee_id'];
 
-        // if ($isManager || $isOwner) {
-        //     // Process the advance request notification logic
-        //     return response()->json([
-        //         'message' => 'Advance request notification sent successfully!',
-        //         'data' => $data
-        //     ]);
-        // } else {
-        //     return response()->json(['error' => 'Forbidden'], 403);
-        // }
+        if ($role == 'admin' || $role == 'manager' ) {
+            // Process the advance request notification logic
+            return response()->json([
+                'message' => $message,
+                'data' => $data
+            ]);
+        } else {
+            return response()->json(['error' => 'Forbidden'], 403);
+        }
 
         
         //Process the reward notification logic
-        return response()->json([
-            'message' => $message,
-            // 'user' => $user,
-            'data' => $data
-        ]);
+        // return response()->json([
+        //     'message' => $message,
+        //     // 'user' => $user,
+        //     'data' => $data
+        // ]);
     }
 }

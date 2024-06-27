@@ -1,17 +1,34 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json([
-            'message' => 'Notifications microservice is up and running!'
-        ]);
+        // return response()->json([
+        //     'message' => 'Reward notification sent successfully!',
+        // ]);
+        $user = Auth::user();
+
+        // if ($user->role === 'staff' || $user->role === 'tech_lead') {
+        //     $payments = "you did it";
+        // } else {
+        //     $payments = "you failed";
+        // }
+        $jwtPayload = $request->get('jwt_payload');
+        $email = $request->get('email');
+        $role = $request->get('role');
+
+        // return response()->json([
+        //     'message' => 'Request successful',
+        //     'payload' => $jwtPayload,
+        // ]);
+        // return response()->json( $payments);
     }
+
     // Method to handle reward notifications
     public function reward(Request $request)
     {
