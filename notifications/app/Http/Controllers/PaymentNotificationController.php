@@ -28,21 +28,21 @@ class PaymentNotificationController extends Controller
 
             $month = $data['month'];
             $year = $data['year'];
-            $ownersemail = $data['email'];
+            $requestemail = $data['email'];
             $message = "Payment for for $month $year has been disbursed";
 
 
             // Access the email and role from the request attributes
-            $email = $request->get('email');
+            $ownersemail = $request->get('email');
             $role = $request->get('role');
 
-            if (($role == 'admin' || $role == 'manager') && $email != $ownersemail) {
+            if (($role == 'admin' || $role == 'manager') && $requestemail != $ownersemail) {
                 // Process the advance request notification logic
                 return response()->json([
                     'message' => $message,
                     'data' => $data
                 ]);
-            } else if ($email == $ownersemail) {
+            } else if ($requestemail == $ownersemail) {
                 // Return unauthorized response if conditions are not met
                 return response()->json([
                     'message' => $message,
