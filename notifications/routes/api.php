@@ -16,6 +16,7 @@ Route::middleware(['api'])->group(function () {
 });
 // Route::get('/notification', [NotificationController::class, 'index']);
 // routes/api.php
+Route::post('/notifications/reward', [RewardNotificationController::class, 'send']);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
 Route::get('/notification', [NotificationController::class, 'index']);
