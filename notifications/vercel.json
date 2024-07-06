@@ -30,11 +30,9 @@
     "APP_ROUTES_CACHE": "/tmp/routes.php",
     "APP_SERVICES_CACHE": "/tmp/services.php",
     "VIEW_COMPILED_PATH": "/tmp",
-    "LOG_CHANNEL": "stderr",
 
-    "CACHE_DRIVER": "file",
-    "SESSION_DRIVER": "file",
-    "QUEUE_DRIVER": "sync",
-    "CACHE_BUSTER": "1" 
+    "CACHE_DRIVER": "array",
+    "LOG_CHANNEL": "stderr",
+    "SESSION_DRIVER": "array"
 }
 }
