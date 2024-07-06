@@ -37,7 +37,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         Log::info('RouteServiceProvider boot method called');
-        $this->info('RouteServiceProvider boot method called'); 
         
         $this->configureRateLimiting();
 
@@ -83,6 +82,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
+        
         Route::prefix('v1') 
         ->middleware('jwt.verify')
         ->namespace($this->namespace)
