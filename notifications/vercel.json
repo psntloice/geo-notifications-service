@@ -3,14 +3,14 @@
       "framework": null,
 
    "functions": {
-    "api/*.php": {
+    "v1/*.php": {
       "runtime": "vercel-php@0.7.1"
     }
   },
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/api/index.php"
+            "dest": "/v1/index.php"
         }
     ],
     "env": {
