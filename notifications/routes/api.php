@@ -22,8 +22,7 @@ Route::middleware(['api'])->group(function () {
 Route::get('/notification', [NotificationController::class, 'index']);
 
 
-Route::group(['prefix' => 'v1'], function(){
-Route::group(['middleware' => ['jwt.verify', 'api']], function() {
+Route::group(['middleware' => ['jwt.verify']], function() {
 // Route::get('/notification', [NotificationController::class, 'index']);
 Route::get('/notification', [NotificationController::class, 'index']);
 
@@ -32,5 +31,6 @@ Route::post('/notifications/disbursement', [DisbursementNotificationController::
 Route::post('/notifications/advance-request', [AdvanceRequestNotificationController::class, 'send']);
 Route::post('/notifications/payment', [PaymentNotificationController::class, 'send']);
 });
+Route::group(['prefix' => 'v1'], function(){
 
 });
