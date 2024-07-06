@@ -16,4 +16,4 @@
 // putenv("APP_URL=https://$vercelURL");
 
 // Forward Vercel requests to public index.
-require __DIR__ . "/" . "../public/index.php";
+require __DIR__ . "/" . "public/index.php";
