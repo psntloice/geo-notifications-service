@@ -5,6 +5,9 @@
    "functions": {
     "api/*.php": {
       "runtime": "vercel-php@0.7.1"
+    },
+    "config": {
+      "maxLambdaSize": "50mb"
     }
   },
     "routes": [
