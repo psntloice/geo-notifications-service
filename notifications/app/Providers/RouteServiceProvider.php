@@ -39,12 +39,9 @@ class RouteServiceProvider extends ServiceProvider
         Log::info('RouteServiceProvider boot method called');
         
         $this->configureRateLimiting();
-
-        $this->routes(function () {
-            Log::info('Defining API and Web routes');
-            $this->mapApiRoutes();
-            $this->mapWebRoutes();
-        });
+$this->mapApiRoutes();
+$this->mapWebRoutes();
+       
     }
 
     /**
@@ -82,7 +79,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        
+        Log::info('Def API and Web routes');
+
         Route::prefix('v1') 
         ->middleware('jwt.verify')
         ->namespace($this->namespace)
