@@ -18,10 +18,10 @@ class NotificationController extends Controller
         // } else {
         //     $payments = "you failed";
         // }
-        $jwtPayload = $request->get('jwt_payload');
-        $email = $request->get('email');
-        $role = $request->get('role');
-
+        // $jwtPayload = $request->get('jwt_payload');
+        // $email = $request->get('email');
+        // $role = $request->get('role');
+return "yooh";
         // return response()->json([
         //     'message' => 'Request successful',
         //     'payload' => $jwtPayload,
