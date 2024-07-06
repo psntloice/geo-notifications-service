@@ -13,6 +13,8 @@ Log::info('API routes loaded');
 
 Route::middleware(['api'])->group(function () {
     Route::get('/notifications', [NotificationController::class, 'index']);
+    Route::get('/notification', [NotificationController::class, 'index']);
+
 });
 // Route::get('/notification', [NotificationController::class, 'index']);
 // routes/api.php
