@@ -5,9 +5,6 @@
    "functions": {
     "api/*.php": {
       "runtime": "vercel-php@0.7.1"
-    },
-    "config": {
-      "maxLambdaSize": "50mb"
     }
   },
     "routes": [
@@ -33,9 +30,11 @@
     "APP_ROUTES_CACHE": "/tmp/routes.php",
     "APP_SERVICES_CACHE": "/tmp/services.php",
     "VIEW_COMPILED_PATH": "/tmp",
-
-    "CACHE_DRIVER": "array",
     "LOG_CHANNEL": "stderr",
-    "SESSION_DRIVER": "array"
+
+    "CACHE_DRIVER": "file",
+    "SESSION_DRIVER": "file",
+    "QUEUE_DRIVER": "sync",
+    "CACHE_BUSTER": "1" 
 }
 }
