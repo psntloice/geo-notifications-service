@@ -8,7 +8,16 @@
     }
   },
     "routes": [
-       
+        {
+            "src": "/(.*)",
+            "dest": "/api/index.php"
+        },
+        { "src": "/api/index.php", "dest": "/api/index.php" },
+        { "src": "/api/(.*)", "dest": "/api/$1.php" },
+        {
+          "src": "/(.*)",
+          "dest": "/index.php"
+      },
         { "src": "/(.*)", "dest": "/public/index.php" }
     ],
     "env": {
