@@ -18,11 +18,11 @@ Route::middleware(['api'])->group(function () {
 // routes/api.php
 Route::post('/notifications/reward', [RewardNotificationController::class, 'send']);
 Route::get('/notification', [NotificationController::class, 'index']);
+Route::post('/notifications/reward', [RewardNotificationController::class, 'send']);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
 // Route::get('/notification', [NotificationController::class, 'index']);
 
-Route::post('/notifications/reward', [RewardNotificationController::class, 'send']);
 Route::post('/notifications/disbursement', [DisbursementNotificationController::class, 'send']);
 Route::post('/notifications/advance-request', [AdvanceRequestNotificationController::class, 'send']);
 Route::post('/notifications/payment', [PaymentNotificationController::class, 'send']);
