@@ -32,7 +32,7 @@ return [
     */
 
     'stores' => [
-
+'routes' => false,
         'array' => [
             'driver' => 'array',
             'serialize' => false,
