@@ -14,7 +14,11 @@ Log::info('API routes loaded');
 Route::middleware(['api'])->group(function () {
     Route::get('/notifications', [NotificationController::class, 'index']);
     Route::get('/notification', [NotificationController::class, 'index']);
-
+    Route::post('/notifications/reward', [RewardNotificationController::class, 'send']);
+    Route::post('/notifications/disbursement', [DisbursementNotificationController::class, 'send']);
+    Route::post('/notifications/advance-request', [AdvanceRequestNotificationController::class, 'send']);
+    Route::post('/notifications/payment', [PaymentNotificationController::class, 'send']);
+    
 });
 // Route::get('/notification', [NotificationController::class, 'index']);
 // routes/api.php
@@ -31,6 +35,7 @@ Route::post('/notifications/reward', [RewardNotificationController::class, 'send
 Route::post('/notifications/disbursement', [DisbursementNotificationController::class, 'send']);
 Route::post('/notifications/advance-request', [AdvanceRequestNotificationController::class, 'send']);
 Route::post('/notifications/payment', [PaymentNotificationController::class, 'send']);
+
 });
 
 });
