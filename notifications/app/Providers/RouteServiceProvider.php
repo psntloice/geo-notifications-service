@@ -81,8 +81,7 @@ $this->mapWebRoutes();
     {
         Log::info('Def API and Web routes');
 
-        Route::prefix('v1') 
-        ->middleware('jwt.verify')
+        Route::middleware('jwt.verify')
         ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
     }
