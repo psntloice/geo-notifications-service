@@ -11,7 +11,7 @@ use App\Http\Controllers\PaymentNotificationController;
 
 Log::info('API routes loaded');
 
-Route::middleware(['api', 'jwt.verify'])->group(function () {
+Route::middleware(['api'])->group(function () {
     Route::get('/notifications', [NotificationController::class, 'index']);
     Route::get('/notification', [NotificationController::class, 'index']);
     Route::post('/notifications/reward', [RewardNotificationController::class, 'send']);
