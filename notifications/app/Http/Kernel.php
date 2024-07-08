@@ -14,68 +14,29 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
-        // \App\Http\Middleware\TrustHosts::class,
-        // \App\Http\Middleware\TrustProxies::class,
-        \Illuminate\Http\Middleware\HandleCors::class,
-        // \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        // \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     ];
 
     /**
      * The application's route middleware groups.
      *
-     * @var array<string, array<int, class-string|string>>
+     * @var array
      */
     protected $middlewareGroups = [
-        // 'web' => [
-        //     \App\Http\Middleware\EncryptCookies::class,
-        //     \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-        //     \Illuminate\Session\Middleware\StartSession::class,
-        //     \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        //     \App\Http\Middleware\VerifyCsrfToken::class,
-        //     \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        // ],
+        'web' => [
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            // \Illuminate\Session\Middleware\AuthenticateSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
 
         'api' => [
-            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
+            'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
-
-    /**
-     * The application's middleware aliases.
-     *
-     * Aliases may be used instead of class names to conveniently assign middleware to routes and groups.
-     *
-     * @var array<string, class-string|string>
-     */
-    protected $middlewareAliases = [
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
-        'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
-        'precognitive' => \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-    ];
-    // protected $middleware = [
-    //     \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
-    //     \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-    //     \App\Http\Middleware\TrimStrings::class,
-    //     \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-    //     \Illuminate\Foundation\Http\Middleware\HandleCors::class, // Added in Laravel 10
-    // ];
-
-    /**
-     * The application's route middleware groups.
-     *
-     * @var array
-     */
-    
 
     /**
      * The application's route middleware.
@@ -93,9 +54,31 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        // 'cors' => \App\Http\Middleware\HandleCors::class, // Added in Laravel 10
-    
+
+        // Custom Middleware
         'jwt.verify' => \App\Http\Middleware\JwtMiddleware::class,
     ];
+
+    /**
+     * Define the application's route middleware groups.
+     *
+     * @var array
+     */
     
+
+    /**
+     * The priority-sorted list of middleware.
+     *
+     * This forces non-global middleware to always be in the given order.
+     *
+     * @var array
+     */
+    protected $middlewarePriority = [
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        \Illuminate\Session\Middleware\AuthenticateSession::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        \Illuminate\Auth\Middleware\Authorize::class,
+    ];
 }
