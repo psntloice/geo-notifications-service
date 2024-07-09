@@ -24,6 +24,7 @@ Route::post('/notifications/payment', [PaymentNotificationController::class, 'se
 
 
 
+
 Route::group(['prefix' => 'v1'], function(){
             Route::get('/notification', [NotificationController::class, 'index']);
             Route::post('/notifications/reward', [RewardNotificationController::class, 'send']);
